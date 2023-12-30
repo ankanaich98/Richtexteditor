@@ -1,0 +1,24 @@
+{% if saved_data %}
+{% for instance in saved_data %}
+<div id="div_editor{{ instance.id }}">
+    {{ instance.editor_content|safe }}
+</div>
+<hr> {# Add a horizontal line between instances for better separation #}
+{% endfor %}
+
+<script>
+    // Extract paragraph content
+    var paragraphContent = document.getElementById('div_editor1').querySelector('p:first-child').textContent;
+
+    // Extract image source
+    var imageSource = document.getElementById('div_editor1').querySelector('img').src;
+
+    // Display extracted content
+    console.log('Paragraph Content:', paragraphContent);
+    console.log('Image Source:', imageSource);
+
+    // You can now use these variables to display the content wherever you need.
+</script>
+{% else %}
+<p>No data available.</p>
+{% endif %}

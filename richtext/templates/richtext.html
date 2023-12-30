@@ -1,0 +1,35 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'rte_theme_default.css' %}" />
+
+<div id="div_editor1">
+    <p>This is a default toolbar demo of Rich text editor.</p>
+    <p><img src='https://richtexteditor.com/images/editor-image.png' /></p>
+</div>
+
+<!-- <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit" value="Post">Save</button>
+</form> -->
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="editor_content" id="editor_content">
+    <button type="submit" value="Post">Save</button>
+</form>
+<a href="{% url 'show-saved-data' %}"><button>Go to Show Page</button></a>
+
+
+
+
+
+<script type="text/javascript" src="https://richtexteditor.com/richtexteditor/rte.js"></script>
+<script type="text/javascript" src="https://richtexteditor.com/richtexteditor/plugins/all_plugins.js"></script>
+
+<script>
+    var editor1 = new RichTextEditor("#div_editor1");
+
+    document.querySelector('form').addEventListener('submit', function () {
+            document.getElementById('editor_content').value = editor1.getHTMLCode();
+        });
+</script>
